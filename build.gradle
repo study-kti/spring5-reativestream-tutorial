@@ -5,14 +5,23 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'war'
 
+mainClassName = 'spring5-reativestream-tutorial'
 group = 'name.browniz23'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
 }
+
+compileJava {
+   sourceCompatibility = 11
+   targetCompatibility = 11
+}
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -20,4 +29,17 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+}
+
+war {
+	enabled=true
+	baseName = 'spring5-reativestream-tutorial' 
+	version = '0.0.1-SNAPSHOT'
+    exclude 'WEB-INF/lib/**'
+    exclude 'WEB-INF/classes/**'
+
+    from('resources')    {
+        include '*.properties'
+        into 'WEB-INF/classes/'
+    }
 }
