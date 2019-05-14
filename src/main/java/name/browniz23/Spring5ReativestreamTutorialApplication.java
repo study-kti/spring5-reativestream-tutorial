@@ -5,10 +5,11 @@ import org.springframework.boot.autoconfigure.*;
 
 @SpringBootApplication
 public class Spring5ReativestreamTutorialApplication {
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Spring5ReativestreamTutorialApplication.class, args);
-		System.out.println("Hello Spring5 ReactiveStream API");
-	}
 
+//		GreetingWebClient gwc = new GreetingWebClient();
+//		System.out.println(gwc.getResult());
+	}
 }
